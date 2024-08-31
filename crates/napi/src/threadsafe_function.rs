@@ -323,8 +323,8 @@ impl<
         1,
         Arc::downgrade(&handle).into_raw().cast_mut().cast(), // pass handler to thread_finalize_cb
         Some(thread_finalize_cb::<T, NewArgs, R>),
-        // callback_ptr.cast(),
-        ptr::null_mut(),
+        callback_ptr.cast(),
+        // ptr::null_mut(),
         Some(call_js_cb::<T, Return, NewArgs, R, CalleeHandled>),
         &mut raw_tsfn,
       )
